@@ -66,7 +66,7 @@ class CommentFrom extends React.Component {
             </FormGroup>
             <FormGroup>
               <Label>Your Name</Label>
-              <Input invalid={this.validateForm()} valid={!this.validateForm()} type="text" onChange={(e)=>this.unControllFromInput("name",e.target.value)} />
+              <Input invalid={this.validateForm() !== null} valid={!this.validateForm()} type="text" onChange={(e)=>this.unControllFromInput("name",e.target.value)} />
               <FormFeedback>{this.validateForm()}</FormFeedback>
             </FormGroup>
             <FormGroup>
@@ -77,7 +77,7 @@ class CommentFrom extends React.Component {
         </ModalBody>
         <ModalFooter>
           <div style={{width:"100%"}}>
-          <Button className="btn-info mr-auto" disabled={this.validateForm()}  onClick={this.onToggle}  >Submit</Button>
+          <Button className="btn-info mr-auto" disabled={this.validateForm() !== null}  onClick={this.onToggle}  >Submit</Button>
           </div>
         </ModalFooter>
       </Modal>

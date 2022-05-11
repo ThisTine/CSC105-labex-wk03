@@ -21,10 +21,11 @@ const mapStateToProps = state => {
   }
 }
 
-const DishWithId = ({match:{params:{dishId}}}) => { 
+const DishWithId = (props) => { 
+  const {match:{params:{dishId}}} = props
   return(
     <div className="container my-5">
-      {dishId && <DishDetail comments={COMMENTS.filter(item=>item.dishId == dishId)} dishes={DISHES} selectedDish={dishId} dish={DISHES.filter(item=>item.id==dishId)[0]} />}
+      {dishId && <DishDetail comments={props.comments.filter(item=>item.dishId == dishId)} dishes={props.dishes} selectedDish={dishId} dish={props.dishes.filter(item=>item.id==dishId)[0]} />}
     </div>
   );
 };
@@ -47,8 +48,13 @@ class Main extends Component {
     this.setState({ selectedDish: dishId });
   }
 
+  // componentDidMount(){
+  //   console.log(this.props)
+  // }
+
   render() {
     const HomePage = () => {
+      
       return(
           <Home 
               dish={this.props.dishes.filter((dish) => dish.featured)[0]}
@@ -76,7 +82,7 @@ class Main extends Component {
             )}
           />
           <Route exact path="/contactus" component={Contact} />
-          <Route path='/menu/:dishId' component={DishWithId} />
+          <Route path='/menu/:dishId' component={connect(mapStateToProps)(DishWithId)} />
           <Redirect to="/home" />
         </Switch>
 
