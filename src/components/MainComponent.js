@@ -25,7 +25,9 @@ const DishWithId = (props) => {
   const {match:{params:{dishId}}} = props
   return(
     <div className="container my-5">
-      {dishId && <DishDetail comments={props.comments.filter(item=>item.dishId == dishId)} dishes={props.dishes} selectedDish={dishId} dish={props.dishes.filter(item=>item.id==dishId)[0]} />}
+      {dishId && <DishDetail 
+      comments={props.comments.filter(item=>item.dishId+"" === dishId)} 
+      dishes={props.dishes} selectedDish={dishId}  />}
     </div>
   );
 };
