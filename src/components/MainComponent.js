@@ -41,11 +41,6 @@ class Main extends Component {
 
     return (
       <div>
-        <Navbar dark color="primary">
-          <div className="container">
-            <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
-          </div>
-        </Navbar>
         <Header />
         <Switch>
           <Route path="/home" component={HomePage} />
