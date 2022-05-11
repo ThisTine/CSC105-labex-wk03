@@ -62,11 +62,13 @@ class CommentFrom extends React.Component {
           <Form>
             <FormGroup>
               <Label>Rating</Label>
-              <Input type="number" onChange={(e)=>this.unControllFromInput("rating",e.target.value)}  min={1} max={5} defaultValue={1} />
+              <Input type="select" onChange={(e)=>this.unControllFromInput("rating",e.target.value)}  defaultValue={1} >
+                {[1,2,3,4,5].map(item=><option key={item}>{item}</option>)}
+              </Input>
             </FormGroup>
             <FormGroup>
               <Label>Your Name</Label>
-              <Input invalid={this.validateForm() !== null} valid={!this.validateForm()} type="text" onChange={(e)=>this.unControllFromInput("name",e.target.value)} />
+              <Input placeholder="Your name" invalid={this.validateForm() !== null} valid={!this.validateForm()} type="text" onChange={(e)=>this.unControllFromInput("name",e.target.value)} />
               <FormFeedback>{this.validateForm()}</FormFeedback>
             </FormGroup>
             <FormGroup>
